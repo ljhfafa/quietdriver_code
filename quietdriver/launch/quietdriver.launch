@@ -1,0 +1,57 @@
+<launch>
+
+  <!-- In this launchfile, we demonstrate how to set some initial variables as parameters,
+  	how to record the output file to a place that is persistent, and how to 
+	use a namespace for the node in which we are running. -->
+
+  <!-- change the output directory and prefix if this is not where yours is mapped -->
+  <arg name="bagfileout" default="/ros/catkin_ws/quietdriver"/>
+
+  <!-- sets the initial position of the lead car. -->
+  <param name="/leadcar/x0" type="double" value="40.0" />
+
+  <!-- sets the initial velocity of the ego car. -->
+  <param name="/egocar/v0" type="double" value="10.0" />
+  <!-- sets the initial position of the ego car. -->
+  <param name="/egocar/x0" type="double" value="0.0" />
+
+  <!-- change the start time if needed -->
+  <node pkg="rosbag" type="play" name="rosbag_player" args="/ros/catkin_ws/mytest.bag --topics /car/state/vel_x -s 100">
+    <!-- remap the output to go into the desired car -->
+	<remap from="/car/state/vel_x" to="/leadcar/vel_x" />
+  </node>
+  
+  
+  <!-- By putting this car into a namespace, we keep the variables clean -->
+  <group ns="leadcar">
+	<node pkg="odometer" type="odometer" name="odometer_leadcar">
+	</node>
+  </group>
+
+  <!-- By putting this car into a namespace, we keep the variables clean -->
+  <group ns="egocar">
+	  <node pkg="carsimplesimulink" type="carsimplesimulink" name="carsimplesimulink_node">
+   	  </node>
+	  <node pkg="quietdriver" type="quietdriver" name="quietdriver_node">
+	  </node>
+  </group>
+
+
+
+  <node pkg="subtractor" type="subtractor" name="subtractor_relvel">
+    <remap from="in1" to="/leadcar/vel_x" />
+	<remap from="in2" to="/egocar/vel_x" />
+	<remap from="diff" to="/egocar/rel_vel" />
+  </node>
+
+  <node pkg="subtractor" type="subtractor" name="subtractor_odom">
+    <remap from="in1" to="/leadcar/odom" />
+	<remap from="in2" to="/egocar/odom_x" />
+	<remap from="diff" to="/egocar/lead_dist" />
+  </node>
+
+  
+  <!-- change the output directory if this is not where yours is mapped -->
+  <node pkg="rosbag" type="record" name="rosbag_recorder" args="-a -o $(arg bagfileout)" />
+  
+</launch>
