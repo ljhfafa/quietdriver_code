@@ -1,0 +1,20 @@
+apps:
+  - name: quietdriver
+    properties:
+      - owns_panda: true
+    dependencies:
+      - apt: python3-pandas
+      - pip3: cantools
+      - pip3: shapely
+    ros_repositories:
+        - owner: jmscslgroup
+          repo: can_to_ros
+        - owner: jmscslgroup
+          repo: cbf
+          branch_or_hash: original_CBF_implementation_2021
+        - owner: jmscslgroup
+          repo: velocity_controller
+        - owner: jmscslgroup
+          repo: setpointreader
+        - owner: ljhfafa
+          repo: quietdriver_code

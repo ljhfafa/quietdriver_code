@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Controller Launches. profproject control and CBF -->
+  <node pkg="quietdriver" type="quietdriver" name="quietdriver_node" output="screen">
+		<remap from="/ecocar/cmd_accel" to="/cmd_accel_pre"/>
+		<remap from="/egocar/lead_dist" to="/lead_dist"/>
+		<remap from="/egocar/rel_vel" to="/rel_vel"/>
+		<remap from="/egocar/vel_x" to="/car/state/vel_x"/>
+	</node>
+<!-- CBF params -->
+  <arg name="description" default="quietdriver_controller2"/>
+
+	<arg name="margin" default="30.0"/>
+	<arg name="use_margin" default="false"/>
+	<arg name="hwil" default="true"/>
+	<arg name="readonly" default="false"/>
+	<arg name="vsl_hwil_test" default="false"/>
+<!-- CBF node -->
+  <node pkg="cbf" type="cbf" name="cbf" if="$(eval not readonly and hwil)">
+	</node>
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- CAN_to_ROS launches, for vehicle interface, subs, rosbag record and safety_checks(?) -->
+<node pkg="can_to_ros" type="vehicle_interface" name="vehicle_interface" output="screen" respawn="true" respawn_delay="2" />
+  <node pkg="can_to_ros" type ="subs" name="subs" output="screen" if="$(arg hwil)">
+	</node>
+  <include file="$(find can_to_ros)launch/safety_checks.launch" />
+<!-- recording the ros bag -->
+ <node pkg="can_to_ros" type ="rosbag_record.sh" name="bashscript2" output="screen" args="$(arg description) $(arg hwil)" />
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+</launch>

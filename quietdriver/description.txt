@@ -1,0 +1,1 @@
+The QuietDriver Controller is an enhancement of the traditional fixed time-gap model, aiming to provide smoother and more responsive vehicle-following dynamics in simulations.
