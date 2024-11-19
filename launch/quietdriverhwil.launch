@@ -3,7 +3,7 @@
   <!-- ~~~~~~~~~~~~~~~~~~~~~~~~ -->
   <!-- Controller Launches. profproject control and CBF -->
   <node pkg="quietdriver" type="quietdriver" name="quietdriver_node" output="screen">
-		<remap from="/ecocar/cmd_accel" to="/cmd_accel_pre"/>
+		<remap from="/egocar/cmd_accel" to="/cmd_accel_pre"/>
 		<remap from="/egocar/lead_dist" to="/lead_dist"/>
 		<remap from="/egocar/rel_vel" to="/rel_vel"/>
 		<remap from="/egocar/vel_x" to="/car/state/vel_x"/>
