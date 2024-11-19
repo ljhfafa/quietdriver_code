@@ -9,9 +9,6 @@ SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_q
 // For Block quietdriver/space-gap
 SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_82;
 
-// For Block quietdriver/space-gap1
-SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_83;
-
 // For Block quietdriver/speed-gap
 SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_81;
 

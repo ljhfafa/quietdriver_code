@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'quietdriver'.
 //
-// Model version                  : 5.32
+// Model version                  : 5.36
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Thu Nov  7 01:41:40 2024
+// C/C++ source code generated on : Tue Nov 19 01:06:44 2024
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)

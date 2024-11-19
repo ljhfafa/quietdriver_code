@@ -64,9 +64,6 @@ add_executable(quietdriver
   src/main.cpp
   src/quietdriver.cpp
   src/rosnodeinterface.cpp
-  src/rtGetInf.cpp
-  src/rtGetNaN.cpp
-  src/rt_nonfinite.cpp
   src/slros_busmsg_conversion.cpp
   src/slros_initialize.cpp
 )
@@ -76,13 +73,13 @@ endif()
 target_compile_options(quietdriver PUBLIC 
   $<$<OR:$<COMPILE_LANGUAGE:CXX>,$<COMPILE_LANGUAGE:C>>:
   -DMODEL=quietdriver
-  -DNUMST=2
+  -DNUMST=1
   -DNCSTATES=0
   -DHAVESTDIO
   -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
   -DCLASSIC_INTERFACE=0
   -DALLOCATIONFCN=0
-  -DTID01EQ=1
+  -DTID01EQ=0
   -DTERMFCN=1
   -DONESTEPFCN=1
   -DMAT_FILE=0
@@ -129,4 +126,4 @@ add_custom_command(
                    ARGS -E copy ${PROJECT_SOURCE_DIR}/src/${file_i} ${CATKIN_DEVEL_PREFIX}/quietdriver_ert_rtw/${file_i}
 				   )
 endforeach(file_i)
-# Generated on Thu Nov 07 01:41:48 2024
+# Generated on Tue Nov 19 01:06:50 2024

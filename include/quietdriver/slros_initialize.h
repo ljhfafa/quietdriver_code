@@ -14,9 +14,6 @@ extern SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64
 // For Block quietdriver/space-gap
 extern SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_82;
 
-// For Block quietdriver/space-gap1
-extern SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_83;
-
 // For Block quietdriver/speed-gap
 extern SimulinkSubscriber<std_msgs::Float64, SL_Bus_quietdriver_std_msgs_Float64> Sub_quietdriver_81;
 

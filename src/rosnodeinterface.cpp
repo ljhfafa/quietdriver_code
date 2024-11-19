@@ -3,9 +3,9 @@
 //
 // Code generated for Simulink model 'quietdriver'.
 //
-// Model version                  : 5.32
+// Model version                  : 5.36
 // Simulink Coder version         : 24.2 (R2024b) 21-Jun-2024
-// C/C++ source code generated on : Thu Nov 07 01:41:46 2024
+// C/C++ source code generated on : Tue Nov 19 01:06:48 2024
 //
 
 #ifdef _MSC_VER
