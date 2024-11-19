@@ -28,7 +28,7 @@ echo "Installing {APP_NAME_PRETTY}..."
 pushd /home/$LIBPANDA_USER/catkin_ws
 runuser -l $LIBPANDA_USER -c 'source /opt/ros/noetic/setup.bash && cd catkin_ws && catkin_make'
 source devel/setup.sh
-rosrun robot_upstart install quietdriver_code/launch/${LAUNCH_FILE} --user root
+rosrun robot_upstart install quietdriver/launch/${LAUNCH_FILE} --user root
 
 echo "Enabling can_to_ros startup script"
 sudo systemctl daemon-reload
